@@ -1,45 +1,67 @@
-
 // Constructor para crear objetos, en este caso sintetizadores (instr. musical electronico),
 class Sintetizador {
-    constructor (marca ,modelo, id, polifonia, precio, cantidad){
+    constructor (marca ,modelo, id, polifonia, precio, cantidad, img){
         this.marca = marca
         this.modelo = modelo
         this.id = id
         this.polifonia = polifonia
         this.precio = parseFloat(precio)
         this.cantidad = parseFloat(cantidad)
+        this.img = img
     }
 }
 
-// Array y objetos pusheados
-let sintesStock = [];
-let sinte1 = new Sintetizador("Korg", "Ms-20", 1, "Monofonico", 550, 4)
-let sinte2 = new Sintetizador("Roland", "Juno 106", 2, "Polifonico", 2500, 2)
-let sinte3 = new Sintetizador("SEQUENTIAL", "Prophet 5", 3, "Polifonico", 3000, 1)
-let sinte4 = new Sintetizador("TE", "OP-1", 4, "Polifonico", 1200, 5)
-let sinte5 = new Sintetizador("Moog", "Minimoog", 5, "Monofonico", 5000, 1)
-let sinte6 = new Sintetizador("Moog", "Moog Source", 6, "Monofonico", 2000, 3)
-let sinte7 = new Sintetizador("Oberheim", "OB-Xa", 7, "Polifonico", 7000, 1)
-let sinte8 = new Sintetizador("YAMAHA", "CS-80", 8, "Polifonico", 50000, 0)
-
-sintesStock.push(sinte1)
-sintesStock.push(sinte2)
-sintesStock.push(sinte3)
-sintesStock.push(sinte4)
-sintesStock.push(sinte5)
-sintesStock.push(sinte6)
-sintesStock.push(sinte7)
-sintesStock.push(sinte8)
-
 // Array carrito inicializado vacio
 let carrito = []
+// Array y objetos pusheados
+let sintesStock = [];
+
+sintesStock.push(new Sintetizador("Korg", "Ms-20", 1, "Monofonico", 550, 4, "../img/ms20.jpg"))
+sintesStock.push(new Sintetizador("Roland", "Juno 106", 2, "Polifonico", 2500, 2, "../img/juno106.jpg"))
+sintesStock.push(new Sintetizador("SEQUENTIAL", "Prophet 5", 3, "Polifonico", 3000, 1, "../img/prophet5.jpg"))
+sintesStock.push(new Sintetizador("TE", "OP-1", 4, "Polifonico", 1200, 5, "../img/op1.jpg"))
+sintesStock.push(new Sintetizador("Moog", "Minimoog", 5, "Monofonico", 5000, 1, "../img/minimoog.jpg"))
+sintesStock.push(new Sintetizador("Moog", "Moog Source", 6, "Monofonico", 2000, 3, "../img/moogsource.jpg"))
+sintesStock.push(new Sintetizador("Oberheim", "OB-Xa", 7, "Polifonico", 7000, 1, "../img/obxa.jpg"))
+sintesStock.push(new Sintetizador("YAMAHA", "CS-80", 8, "Polifonico", 50000, 1, "../img/cs80.jpg"))
+sintesStock.push(new Sintetizador("Linn Electronics", "LinnDrum", 9, "Monofonico", 2000, 1, "../img/linndrum.jpg"))
+sintesStock.push(new Sintetizador("Roland", "TR-808", 10, "Monofonico", 5000, 2, "../img/tr808.jpg"))
+
+
+
+function renderCards() {
+
+    const contenedorSintes = document.getElementById('contenedor')
+
+    sintesStock.forEach((sinte) => {
+        const div = document.createElement("div")
+        div.classList.add("card my-3 mx-3 sinte-card")
+        div.innerHTML = `
+        <img src="${sinte.img}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">${sinte.marca} - ${sinte.modelo}</h5>
+            <p class="card-text">USD$${sinte.precio}</p>
+            <a href="#" class="btn btn-primary">Agregar al Carrito</a>
+        </div>`
+
+
+    contenedorSintes.appendChild(div)
+    })
+}
+
+
+
+
+
+
+/*
 
 
 // Funcion para agregar productos al carrito
 function addToCart() {
     let productoId = Number(prompt("Ingrese un Nro. de Id para agregar un instrumento al carrito \n" + info))
     let cantidad = Number(prompt(`Cuantas unidades de instrumento desea agregar?`))
-    let producto = sintesStock.find(producto => producto.id===productoId)
+    let producto = sintesStock.find(producto => producto.id === productoId)
     producto.cantidad = cantidad
     producto.total = producto.precio * cantidad
     carrito.push(producto)
@@ -119,8 +141,23 @@ if (continuar == "fin") {
                             3. Vaciar carrito.`))
 } 
 
-// Ciclo if y switch para las distintas opciones 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+// Ciclo if y switch para las distintas opciones 
 
 while (opcion == 1 || opcion == 2 || opcion == 3) {
     switch (opcion) {
@@ -145,7 +182,7 @@ if (opcion != 1 && opcion != 2 && opcion != 3) {
     alert("Ingrese una opcion valida")
 }
 
-
+*/
 
 
 
