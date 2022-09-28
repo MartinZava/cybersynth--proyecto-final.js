@@ -13,6 +13,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 
 :root {
     --bs-blue: #1ba2f6;
@@ -92,14 +93,19 @@
 
 /* Clases añadidas por mi */
 
-.contenedor {
+.contenedor-estilo {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     margin-top: 3rem;
     width: 70%;
+    margin: auto;
+}
+
+.contenedor-carrito {
+    width: 40%;
     margin: auto;
 }
 
@@ -113,23 +119,35 @@
     text-align: center;
 }
 
-.carrito {
+
+.img-carrito {
+    width: 80px;
+    height: 80px;
+}
+
+.lista-carrito {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1.5rem 0 1.5rem 0;
+}
+
+.datos-carrito {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
     align-content: center;
     align-items: center;
 }
 
-.sinte-card {
-    width: 18rem;
-}
 
 
 
 
 
+/* FIN Clases añadidas por mi */
 
 
 
