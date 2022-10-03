@@ -18,28 +18,26 @@ let carrito = []
 // Array del stock y objetos pusheados
 let sintesStock = [];
 
-sintesStock.push(new Sintetizador("Korg", "Ms-20", 1, "Monofonico", 550, 4, "../img/ms20.jpg"))
-sintesStock.push(new Sintetizador("Roland", "Juno 106", 2, "Polifonico", 2500, 2, "../img/juno106.jpg"))
+sintesStock.push(new Sintetizador("Korg", "Ms-20", 1, "Monofonico", 550, 1, "../img/ms20.jpg"))
+sintesStock.push(new Sintetizador("Roland", "Juno 106", 2, "Polifonico", 2500, 1, "../img/juno106.jpg"))
 sintesStock.push(new Sintetizador("SEQUENTIAL", "Prophet 5", 3, "Polifonico", 3000, 1, "../img/prophet5.jpg"))
-sintesStock.push(new Sintetizador("TE", "OP-1", 4, "Polifonico", 1200, 5, "../img/op1.jpg"))
+sintesStock.push(new Sintetizador("TE", "OP-1", 4, "Polifonico", 1200, 1, "../img/op1.jpg"))
 sintesStock.push(new Sintetizador("Moog", "Minimoog", 5, "Monofonico", 5000, 1, "../img/minimoog.jpg"))
-sintesStock.push(new Sintetizador("Moog", "Moog Source", 6, "Monofonico", 2000, 3, "../img/moogsource.jpg"))
+sintesStock.push(new Sintetizador("Moog", "Moog Source", 6, "Monofonico", 2000, 1, "../img/moogsource.jpg"))
 sintesStock.push(new Sintetizador("Oberheim", "OB-Xa", 7, "Polifonico", 7000, 1, "../img/obxa.jpg"))
 sintesStock.push(new Sintetizador("YAMAHA", "CS-80", 8, "Polifonico", 50000, 1, "../img/cs80.jpg"))
 sintesStock.push(new Sintetizador("Linn Electronics", "LinnDrum", 9, "Monofonico", 2000, 1, "../img/linndrum.jpg"))
-sintesStock.push(new Sintetizador("Roland", "TR-808", 10, "Monofonico", 5000, 2, "../img/tr808.jpg"))
+sintesStock.push(new Sintetizador("Roland", "TR-808", 10, "Monofonico", 5000, 1, "../img/tr808.jpg"))
 
 
 
-
-// DOMContentLoaded
+// DOMContentLoaded (operador ternario aplicado)
 document.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.getItem("carrito")){
-        carrito = JSON.parse(localStorage.getItem("carrito"))
+    localStorage.getItem("carrito") ? (
+        carrito = JSON.parse(localStorage.getItem("carrito")),
         renderCarrito()
-    }
-})
-
+        ):(null) 
+}) 
 
 
 
@@ -114,9 +112,7 @@ const addToCart = (sinteId) => {
     const existe = carrito.some (sinte => sinte.id === sinteId)
     if(existe){
         const sinte = carrito.map (sinte => {
-            if(sinte.id === sinteId){ // Si ese prod ya exixte, lo suma a la cantidad del mismo
-                sinte.cantidad ++
-            }
+            sinte.id === sinteId && sinte.cantidad ++  // Operador logico && y ++ aplicado
         })
     } else { // Si no, lo agrega al carrito
         const instrumAgregado = sintesStock.find((sinte) => sinte.id === sinteId)
@@ -141,10 +137,9 @@ const quitarSinte = (sinteId) => {
 const vaciarCarrito = document.querySelector("#vaciar-carrito")
 vaciarCarrito.addEventListener("click", () =>{
     carrito.length = 0
+    localStorage.removeItem("carrito")
     renderCarrito()
 })
-
-
 
 
 
