@@ -66,6 +66,16 @@ function renderCards() {
         const botonAgregar = document.querySelector(`#agregar${sinte.id}`);
         botonAgregar.addEventListener("click", () => {
             addToCart(sinte.id);
+            // Alert que notifica si agregaste un producto al carrito (Toastify)
+            Toastify({
+                text: `Agregaste ${sinte.marca} - ${sinte.modelo} al carrito!`,
+                duration: 3000,
+                gravity: "bottom",
+                position: "right",
+                style: {
+                    background: "linear-gradient(to right, rgb(240, 120, 0), rgb(240, 80, 0))",
+                }
+                }).showToast();
         });
     });
 }
@@ -91,16 +101,18 @@ function renderCarrito() {
                     <p>${sinte.marca} - ${sinte.modelo}</p>
                     <p>USD$${sinte.precio}</p>
                     <p>Cantidad: ${sinte.cantidad}</p>
-                    <button type="button" class="btn btn-danger boton-agregar" onclick="quitarSinte(${sinte.id})"><i class="bi bi-trash"></i></button>`
+                    <button type="button" class="btn btn-danger" id="quitar-sinte" onclick="quitarSinte(${sinte.id})"><i class="bi bi-trash"></i></button>`
         
         contenedorCarrito.appendChild(div)
 
         localStorage.setItem("carrito", JSON.stringify(carrito))
+
     })
     // Contador del carrito
-    numCarrito.innerText = carrito.lenght
+    numCarrito.innerText = carrito.length
     // Acumulador del precio total, va acumulando el precio del prod por la cantidad agregada al carrito
     totalCarrito.innerText = carrito.reduce((acc, sinte) => acc + sinte.precio * sinte.cantidad, 0)
+
 }
 
 
@@ -139,5 +151,32 @@ vaciarCarrito.addEventListener("click", () =>{
     carrito.length = 0
     localStorage.removeItem("carrito")
     renderCarrito()
+    // Alert que notifica cuando se vacia el carrito (Toastify)
+    Toastify({
+        text: `Vaciaste el carrito`,
+        duration: 3000,
+        gravity: "bottom",
+        position: "right",
+        style: {
+            background: "linear-gradient(to right, #1ba2f6, #6f42c1)",
+        }
+        }).showToast();
+});
+
+
+// Alert que notifica si quitaste un producto del carrito (Toastify). Aun no funciona
+const btnQuitar = document.querySelectorAll("#quitar-sinte")
+btnQuitar.addEventListener("click", () => {
+    Toastify({
+        text: `Quitaste ${sinte.marca} - ${sinte.modelo} del carrito`,
+        duration: 3000,
+        gravity: "bottom",
+        position: "right",
+        style: {
+            background: "linear-gradient(to right, rgb(240, 80, 0), rgb(240, 120, 0))",
+        }
+        }).showToast();
 })
+
+
 

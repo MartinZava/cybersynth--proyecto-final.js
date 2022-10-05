@@ -96,6 +96,8 @@
 
 /* Clases añadidas por mi */
 
+/*INDEX*/
+
 .img__fondo {
     background-image: url(../img/retro-synhwave80s.jpg);
     background-repeat: no-repeat;
@@ -129,6 +131,11 @@
     text-decoration: none;
     margin-right: 1rem;
 }
+
+/* FIN INDEX*/
+
+
+/*SHOP*/
 
 .contenedor-estilo {
     display: flex;
@@ -181,6 +188,21 @@
     align-items: center;
 }
 
+/*FIN SHOP*/
+
+/*SOBRE NOSOTRXS*/
+.sobrenos__titulo {
+    font-family: 'Titillium Web', sans-serif;
+
+}
+
+.sobrenos__parrafo{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.25rem;
+}
+
+
+/*FIN SOBRE NOSOTRXS*/
 
 
 
