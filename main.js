@@ -141,6 +141,16 @@ const quitarSinte = (sinteId) => {
     const i = carrito.indexOf(sinte)
     carrito.splice(i, 1)
     renderCarrito()
+    // Alert que notifica si quitaste un producto del carrito (Toastify)
+    Toastify({
+        text: `Quitaste ${sinte.marca} - ${sinte.modelo} del carrito`,
+        duration: 3000,
+        gravity: "bottom",
+        position: "right",
+        style: {
+            background: "linear-gradient(to right, rgb(240, 80, 0), rgb(240, 120, 0))",
+        }
+        }).showToast();
 }
 
 
@@ -162,21 +172,5 @@ vaciarCarrito.addEventListener("click", () =>{
         }
         }).showToast();
 });
-
-
-// Alert que notifica si quitaste un producto del carrito (Toastify). Aun no funciona
-const btnQuitar = document.querySelectorAll("#quitar-sinte")
-btnQuitar.addEventListener("click", () => {
-    Toastify({
-        text: `Quitaste ${sinte.marca} - ${sinte.modelo} del carrito`,
-        duration: 3000,
-        gravity: "bottom",
-        position: "right",
-        style: {
-            background: "linear-gradient(to right, rgb(240, 80, 0), rgb(240, 120, 0))",
-        }
-        }).showToast();
-})
-
 
 
