@@ -1,34 +1,3 @@
-// Constructor para crear objetos, en este caso sintetizadores (instr. musical electronico),
-class Sintetizador {
-    constructor (marca ,modelo, id, polifonia, precio, cantidad, img){
-        this.marca = marca
-        this.modelo = modelo
-        this.id = id
-        this.polifonia = polifonia
-        this.precio = parseFloat(precio)
-        this.cantidad = parseFloat(cantidad)
-        this.img = img
-    }
-}
-
-
-
-// Array carrito inicializado vacio
-let carrito = []
-// Array del stock y objetos pusheados
-let sintesStock = [];
-
-sintesStock.push(new Sintetizador("Korg", "Ms-20", 1, "Monofonico", 550, 1, "../img/ms20.jpg"))
-sintesStock.push(new Sintetizador("Roland", "Juno 106", 2, "Polifonico", 2500, 1, "../img/juno106.jpg"))
-sintesStock.push(new Sintetizador("SEQUENTIAL", "Prophet 5", 3, "Polifonico", 3000, 1, "../img/prophet5.jpg"))
-sintesStock.push(new Sintetizador("TE", "OP-1", 4, "Polifonico", 1200, 1, "../img/op1.jpg"))
-sintesStock.push(new Sintetizador("Moog", "Minimoog", 5, "Monofonico", 5000, 1, "../img/minimoog.jpg"))
-sintesStock.push(new Sintetizador("Moog", "Moog Source", 6, "Monofonico", 2000, 1, "../img/moogsource.jpg"))
-sintesStock.push(new Sintetizador("Oberheim", "OB-Xa", 7, "Polifonico", 7000, 1, "../img/obxa.jpg"))
-sintesStock.push(new Sintetizador("YAMAHA", "CS-80", 8, "Polifonico", 50000, 1, "../img/cs80.jpg"))
-sintesStock.push(new Sintetizador("Linn Electronics", "LinnDrum", 9, "Monofonico", 2000, 1, "../img/linndrum.jpg"))
-sintesStock.push(new Sintetizador("Roland", "TR-808", 10, "Monofonico", 5000, 1, "../img/tr808.jpg"))
-
 
 
 // DOMContentLoaded (operador ternario aplicado)
@@ -39,6 +8,25 @@ document.addEventListener("DOMContentLoaded", () => {
         ):(null) 
 }) 
 
+
+// Funcion asincrona para traer de la "base de datos" los productos con fetch
+async function fetchSintesStock() {
+    const resp = await fetch('../data.json')
+    return await resp.json()
+}
+
+// Array "stock" de productos
+let sintesStock = [];
+
+// Funcion para llenar el stock con los productos 
+fetchSintesStock().then(sintes => {
+    sintesStock = sintes
+    renderCards()
+})
+
+
+// Array carrito inicializado vacio
+let carrito = []
 
 
 // Variable para llamar por id al contenedor de las cards de cada producto
@@ -105,9 +93,10 @@ function renderCarrito() {
         
         contenedorCarrito.appendChild(div)
 
-        localStorage.setItem("carrito", JSON.stringify(carrito))
-
     })
+
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+
     // Contador del carrito
     numCarrito.innerText = carrito.length
     // Acumulador del precio total, va acumulando el precio del prod por la cantidad agregada al carrito

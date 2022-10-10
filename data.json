@@ -1,0 +1,92 @@
+[
+    {
+        "marca": "Korg",
+        "modelo": "Ms-20",
+        "id": 1,
+        "polifonia": "Monofonico",
+        "precio": 550,
+        "cantidad": 1,
+        "img": "../img/ms20.jpg"
+    },
+    {
+        "marca": "Roland",
+        "modelo": "Juno 106",
+        "id": 2,
+        "polifonia": "Polofonico",
+        "precio": 2500,
+        "cantidad": 1,
+        "img": "../img/juno106.jpg"
+    },
+    {
+        "marca": "SEQUENTIAL",
+        "modelo": "Prophet 5",
+        "id": 3,
+        "polifonia": "Polifonico",
+        "precio": 3000,
+        "cantidad": 1,
+        "img": "../img/prophet5.jpg"
+    },
+    {
+        "marca": "Teenage Engineering",
+        "modelo": " OP-1",
+        "id": 4,
+        "polifonia": "Polifonico",
+        "precio": 1200,
+        "cantidad": 1,
+        "img": "../img/op1.jpg"
+    },
+    {
+        "marca": "Moog",
+        "modelo": "Minimoog",
+        "id": 5,
+        "polifonia": "Monofonico",
+        "precio": 5000,
+        "cantidad": 1,
+        "img": "../img/minimoog.jpg"
+    },
+    {
+        "marca": "Moog",
+        "modelo": "Source",
+        "id": 6,
+        "polifonia": "Monofonico",
+        "precio": 2000,
+        "cantidad": 1,
+        "img": "../img/moogsource.jpg"
+    },
+    {
+        "marca": "Oberheim",
+        "modelo": "OB-Xa",
+        "id": 7,
+        "polifonia": "Polifonico",
+        "precio": 7000,
+        "cantidad": 1,
+        "img": "../img/obxa.jpg"
+    },
+    {
+        "marca": "YAMAHA",
+        "modelo": "CS-80",
+        "id": 8,
+        "polifonia": "Polifonico",
+        "precio": 50000,
+        "cantidad": 1,
+        "img": "../img/cs80.jpg"
+    },
+    {
+        "marca": "Linn Electronics",
+        "modelo": "LinnDrum",
+        "id": 9,
+        "polifonia": "Monofonico",
+        "precio": 2000,
+        "cantidad": 1,
+        "img": "../img/linndrum.jpg"
+    },
+    {
+        "marca": "Roland",
+        "modelo": "TR-808",
+        "id": 10,
+        "polifonia": "Monofonico",
+        "precio": 5000,
+        "cantidad": 1,
+        "img": "../img/tr808.jpg"
+    }
+]
