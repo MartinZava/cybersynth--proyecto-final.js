@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBERSYNTH - SHOP</title>
+    <title>CYBERSYNTH - TIENDA</title>
+    <link rel="stylesheet" href="../style/style-bstrp.css">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
 </head>
 
-<body>
+<body class="body-back">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -23,28 +24,26 @@
                 <div class="collapse navbar-collapse" id="navbarColor03">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="../pages/shop.html">Tienda</a>
+                            <a class="nav-link" href="../pages/tienda.html">Tienda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../pages/contact.html">Contacto</a>
+                            <a class="nav-link" href="../pages/carrito.html">Carrito</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../pages/aboutus.html">Sobre Nosotrxs</a>
+                            <a class="nav-link" href="../pages/sobrenos.html">Sobre Nosotrxs</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </nav>
     </header>
     <h1 class="mx-auto my-5 titulo-shop">Sintetizadores Disponibles</h1>
 
+
     <main id="contenedor" class="contenedor-estilo">
         <!-- Cards de productos "pintados" en DOM -->
-    </main>
+    </main> 
+
     
     <section>
         <div class="my-5">
@@ -53,16 +52,24 @@
                     <!-- Contenido del carrito "pintado" en DOM -->
                 </div>
                 <div class="datos-carrito mt-3">
-                    <p>Total: $<span id="total">0</span></p>
-                    <button id="vaciar-carrito" type="button" class="btn btn-outline-primary">Vaciar</button>
+                    <p>Total: USD$<span id="total">0</span></p>
+                </div>
+                <div class="botones-carrito">
+                    <button id="vaciar-carrito" type="button" class="btn btn-outline-primary botones-carrito">Vaciar</button>
+                    <button id="comprar" type="button" class="btn btn-lg btn-success botones-carrito">Finalizar Compra</button>
                 </div>
         </div>
     </section>
 
+    <footer>
+        <p>POWERED BY MartinZava</p>
+    </footer>
 
 
     <script src="../main.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

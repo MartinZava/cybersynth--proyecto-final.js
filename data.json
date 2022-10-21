@@ -12,7 +12,7 @@
         "marca": "Roland",
         "modelo": "Juno 106",
         "id": 2,
-        "polifonia": "Polofonico",
+        "polifonia": "Polifonico",
         "precio": 2500,
         "cantidad": 1,
         "img": "../img/juno106.jpg"

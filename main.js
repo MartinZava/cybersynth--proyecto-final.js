@@ -1,6 +1,5 @@
 
-
-// DOMContentLoaded (operador ternario aplicado)
+// DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
     localStorage.getItem("carrito") ? (
         carrito = JSON.parse(localStorage.getItem("carrito")),
@@ -71,7 +70,6 @@ function renderCards() {
 renderCards()
 
 
-
 // Variables para llamar por id al contenedor del carrito, al contador de prod dentro del carrito y al total del carrito
 const contenedorCarrito = document.querySelector("#contenedor-carrito");
 const numCarrito = document.querySelector("#num-carrito")
@@ -94,7 +92,7 @@ function renderCarrito() {
         contenedorCarrito.appendChild(div)
 
     })
-
+    // Esto va fuera del forEach para que se vacie totalmente el localStorage
     localStorage.setItem("carrito", JSON.stringify(carrito))
 
     // Contador del carrito
@@ -162,4 +160,33 @@ vaciarCarrito.addEventListener("click", () =>{
         }).showToast();
 });
 
+
+
+const finCompra = document.querySelector("#comprar")
+
+finCompra.addEventListener("click", () =>{
+
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Tu carrito esta vacio!',
+        confirmButtonText: 'Seguir comprando',
+        footer: '<a href="../index.html">Volver al inicio</a>'
+    })
+    if (carrito.lenght > 0) {
+        (async () => {
+            const { value: email } = await Swal.fire({
+            title: 'Muchas gracias por tu compra!!',
+            input: 'email',
+            inputLabel: 'Ingresa tu direccion de e-mail para recibir instrucciones para el pago',
+            inputPlaceholder: 'Tu e-mail'
+            })
+            
+            if (email) {
+            Swal.fire(`Chequea tu Inbox 😀`)
+            }
+            
+            })
+    }
+})
 
