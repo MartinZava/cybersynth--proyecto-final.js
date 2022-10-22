@@ -144,6 +144,7 @@ const quitarSinte = (sinteId) => {
 
 // Funcion para vaciar el carrito
 const vaciarCarrito = document.querySelector("#vaciar-carrito")
+
 vaciarCarrito.addEventListener("click", () =>{
     carrito.length = 0
     localStorage.removeItem("carrito")
@@ -162,31 +163,49 @@ vaciarCarrito.addEventListener("click", () =>{
 
 
 
+// Funcion para vaciar el carrito en LocalStorage
+function vaciarLocalStorage() {
+    localStorage.clear()
+}
+
+
+// Funcion para el proceso de checkout. Solicito el email del usuario
 const finCompra = document.querySelector("#comprar")
 
-finCompra.addEventListener("click", () =>{
-
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Tu carrito esta vacio!',
-        confirmButtonText: 'Seguir comprando',
-        footer: '<a href="../index.html">Volver al inicio</a>'
-    })
-    if (carrito.lenght > 0) {
-        (async () => {
-            const { value: email } = await Swal.fire({
-            title: 'Muchas gracias por tu compra!!',
-            input: 'email',
-            inputLabel: 'Ingresa tu direccion de e-mail para recibir instrucciones para el pago',
-            inputPlaceholder: 'Tu e-mail'
-            })
-            
-            if (email) {
-            Swal.fire(`Chequea tu Inbox 😀`)
-            }
-            
-            })
+finCompra.addEventListener("click", () => {
+    if (carrito.length === 0) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Tu carrito esta vacio!",
+            confirmButtonText: "Seguir comprando",
+            footer: '<a href="../index.html">Volver al inicio</a>',
+        });
+    } else {
+        const { value: email } = Swal.fire({
+            title: "Gracias por tu compra!",
+            text: "Te pedimos que ingreses tu email para recibir las instrucciones de pago",
+            input: "email",
+            inputLabel: "Tu email aqui 😀",
+            inputPlaceholder: "Email",
+            confirmButtonText: "Enviar",
+            allowOutsideClick: false
+        });
+        if (email) {
+            Swal.fire(`Muchas Gracias!!`)
+        }
     }
-})
+    // Temporizador para vaciar y resetear todo a 0
+    setTimeout(() => {
+        vaciarLocalStorage();
+        contenedorCarrito.innerHTML = "";
+        numCarrito.innerText = 0
+        totalCarrito.innerText = 0
+    }, 500)
+});
+
+
+
+
+
 
