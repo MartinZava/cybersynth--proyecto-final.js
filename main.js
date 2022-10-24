@@ -182,7 +182,7 @@ finCompra.addEventListener("click", () => {
             footer: '<a href="../index.html">Volver al inicio</a>',
         });
     } else {
-        const { value: email } = Swal.fire({
+        Swal.fire({
             title: "Gracias por tu compra!",
             text: "Te pedimos que ingreses tu email para recibir las instrucciones de pago",
             input: "email",
@@ -190,10 +190,15 @@ finCompra.addEventListener("click", () => {
             inputPlaceholder: "Email",
             confirmButtonText: "Enviar",
             allowOutsideClick: false
-        });
-        if (email) {
-            Swal.fire(`Muchas Gracias!!`)
-        }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Muchas gracias!!",
+                    confirmButtonText: "Continuar"
+                })
+            }
+        })
     }
     // Temporizador para vaciar y resetear todo a 0
     setTimeout(() => {
@@ -203,7 +208,6 @@ finCompra.addEventListener("click", () => {
         totalCarrito.innerText = 0
     }, 500)
 });
-
 
 
 
